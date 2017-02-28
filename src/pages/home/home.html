@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div #IndexedMenu class="indexed-menu">
+    <div class="indexed-item"
+         *ngFor="let item of indexes;let i = index"
+         (click)="selectIndex(i)">
+      {{ item }}
+    </div>
+  </div>
+
+  <ion-list #scheduleList>
+    <ion-item-group *ngFor="let item of contacts" #IonItemGroup>
+
+      <ion-item-divider sticky index-key="item.belong">
+        <ion-label>
+          {{item.groupName}}
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item-sliding *ngFor="let i of item.contacts" #slidingItem>
+        <ion-item>
+          {{ i.displayName + ' ' + i.name }}
+        </ion-item>
+      </ion-item-sliding>
+
+    </ion-item-group>
+  </ion-list>
+
+</ion-content>

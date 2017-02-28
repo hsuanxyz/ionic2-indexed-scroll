@@ -1,0 +1,22 @@
+page-home {
+
+  .indexed-menu{
+    width: 20px;
+    text-align: center;
+    float: right;
+    position: fixed;
+    right: 0;
+    top: 60px;
+    z-index: 104;
+    .indexed-item{
+      margin:1px 0;
+    }
+  }
+
+  .content-ios{
+    .indexed-menu{
+      top: 50px;
+    }
+  }
+
+}
