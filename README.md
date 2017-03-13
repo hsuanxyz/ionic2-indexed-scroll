@@ -60,9 +60,10 @@ ionic2 indexed scroll bar DEMO
 ## Environment
 ```
 Cordova CLI: 6.4.0
-Ionic CLI Version: 2.1.18
-Ionic App Lib Version: 2.1.9
-OS: macOS Sierra
+Ionic Framework Version: 2.2.0
+Ionic CLI Version: 2.2.1
+Ionic App Lib Version: 2.2.0
+Ionic App Scripts Version: 1.1.4
 Node Version: v6.9.2
 Xcode version: Xcode 8.2.1 Build version 8C1002
 ```
