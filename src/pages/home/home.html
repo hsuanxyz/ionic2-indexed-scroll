@@ -8,6 +8,7 @@
 
   <div #IndexedMenu class="indexed-menu">
     <div class="indexed-item"
+         [class.activate]="item === index"
          *ngFor="let item of indexes;let i = index"
          (click)="selectIndex(i)">
       {{ item }}

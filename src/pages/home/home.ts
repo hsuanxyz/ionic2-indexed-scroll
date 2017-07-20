@@ -10,6 +10,7 @@ import { Contacts } from  '../../providers/contacts'
 })
 export class HomePage {
 
+  index: string = 'A';
   indexes:Array<string> = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
   contacts:Array<any> = [];
 
@@ -29,6 +30,7 @@ export class HomePage {
   }
 
   selectIndex(index:number){
+    this.index = this.indexes[index];
     this.content.scrollTo(0,this.ionItemGroup._results[index].nativeElement.offsetTop,300);
 
   }
