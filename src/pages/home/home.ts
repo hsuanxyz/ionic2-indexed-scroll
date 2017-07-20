@@ -1,4 +1,4 @@
-import { Component,ViewChildren,ViewChild } from '@angular/core';
+import {Component, ViewChildren, ViewChild, ChangeDetectorRef } from '@angular/core';
 import {NavController, Content} from 'ionic-angular';
 
 import { Contacts } from  '../../providers/contacts'
@@ -12,15 +12,16 @@ export class HomePage {
 
   index: string = 'A';
   indexes:Array<string> = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
+  offsetTops:Array<number> = [];
   contacts:Array<any> = [];
 
   @ViewChildren('IonItemGroup') ionItemGroup;
-  @ViewChild('IndexedMenu') indexedMenu;
   @ViewChild(Content) content: Content;
 
   constructor(
     public navCtrl: NavController,
     public contactsSev: Contacts,
+    public ref: ChangeDetectorRef,
   ) {
 
     this.contactsSev.getContacts()
@@ -30,15 +31,40 @@ export class HomePage {
       })
   }
 
+  ionViewDidEnter() {
+    this.getOffsetTops();
+  }
+
+  getOffsetTops() {
+    this.offsetTops = this.ionItemGroup._results.map( ele => {
+      return ele.nativeElement.offsetTop
+    })
+  }
+
   selectIndex(index:number){
     this.index = this.indexes[index];
-    const offsetTop = this.ionItemGroup._results[index].nativeElement.offsetTop;
+    const offsetTop = this.offsetTops[index];
     this.content.scrollTo(0, offsetTop, 300);
   }
 
 
-  onScroll($event) {
-    console.log(this.indexedMenu)
+  onScroll() {
+
+    const threshold = 42;
+
+    if (this.content.scrollTop < threshold) {
+      this.index = this.indexes[0];
+      return;
+    }
+
+    for (let i = this.offsetTops.length; i > 0; i--) {
+      if(this.content.scrollTop + threshold >= this.offsetTops[i]) {
+        this.index = this.indexes[i];
+        this.ref.detectChanges();
+        return;
+      }
+    }
+
   }
 
 }
