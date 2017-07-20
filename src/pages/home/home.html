@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content (ionScroll)="onScroll($event)">
 
   <div #IndexedMenu class="indexed-menu">
     <div class="indexed-item"

@@ -15,6 +15,7 @@ export class HomePage {
   contacts:Array<any> = [];
 
   @ViewChildren('IonItemGroup') ionItemGroup;
+  @ViewChild('IndexedMenu') indexedMenu;
   @ViewChild(Content) content: Content;
 
   constructor(
@@ -31,11 +32,13 @@ export class HomePage {
 
   selectIndex(index:number){
     this.index = this.indexes[index];
-    this.content.scrollTo(0,this.ionItemGroup._results[index].nativeElement.offsetTop,300);
-
+    const offsetTop = this.ionItemGroup._results[index].nativeElement.offsetTop;
+    this.content.scrollTo(0, offsetTop, 300);
   }
 
 
-
+  onScroll($event) {
+    console.log(this.indexedMenu)
+  }
 
 }
