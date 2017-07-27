@@ -1,36 +1,40 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Home</ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content (ionScroll)="onScroll()">
 
-  <div #IndexedMenu class="indexed-menu">
-    <div class="indexed-item"
-         [class.activate]="item === index"
-         *ngFor="let item of indexes;let i = index"
-         (click)="selectIndex(i)">
-      {{ item }}
+    <div #IndexedMenu class="indexed-menu">
+        <div class="indexed-item"
+             [class.activate]="item === index"
+             *ngFor="let item of indexes;let i = index"
+             (click)="selectIndex(i)">
+            {{ item }}
+        </div>
     </div>
-  </div>
 
-  <ion-list #scheduleList>
-    <ion-item-group *ngFor="let item of contacts" #IonItemGroup>
+    <ion-list #scheduleList>
+        <ion-item-group *ngFor="let item of contacts" #IonItemGroup>
 
-      <ion-item-divider sticky index-key="item.belong">
-        <ion-label>
-          {{item.groupName}}
-        </ion-label>
-      </ion-item-divider>
+            <ion-item-divider sticky index-key="item.belong">
+                <ion-label>
+                    {{item.groupName}}
+                </ion-label>
+            </ion-item-divider>
 
-      <ion-item-sliding *ngFor="let i of item.contacts" #slidingItem>
-        <ion-item>
-          {{ i.displayName + ' ' + i.name }}
-        </ion-item>
-      </ion-item-sliding>
+            <ion-item-sliding *ngFor="let i of item.contacts" #slidingItem>
+                <ion-item>
+                    {{ i.displayName + ' ' + i.name }}
+                </ion-item>
+            </ion-item-sliding>
 
-    </ion-item-group>
-  </ion-list>
+        </ion-item-group>
+    </ion-list>
+
+    <div class="modal">
+        {{index}}
+    </div>
 
 </ion-content>

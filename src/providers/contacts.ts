@@ -4,11 +4,11 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 /*
-  Generated class for the Contacts provider.
+ Generated class for the Contacts provider.
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
+ See https://angular.io/docs/ts/latest/guide/dependency-injection.html
+ for more info on providers and Angular 2 DI.
+ */
 @Injectable()
 export class Contacts {
 
@@ -22,11 +22,11 @@ export class Contacts {
    */
   getContacts(){
     return this.http.get('./assets/data/contacts.json')
-      .toPromise()
-      .then(response => response.json())
-      .catch( err => {
-        return Promise.reject(err)
-      })
+        .toPromise()
+        .then(response => response.json())
+        .catch( err => {
+          return Promise.reject(err)
+        })
   }
 
   /**
@@ -43,12 +43,12 @@ export class Contacts {
 
     // Create a parent container
     groupContacts = letterStr.split('')
-      .map( (str) => {
-        return {
-          groupName:str,
-          contacts:[]
-        }
-      } );
+        .map( (str) => {
+          return {
+            groupName:str,
+            contacts:[]
+          }
+        } );
 
     // Push into the correct group
     groupContacts.forEach( (item) => {
@@ -58,7 +58,7 @@ export class Contacts {
           item.contacts.push(i)
         }else{
           if( letterStr.indexOf(i.displayName[0]) === -1
-            || i.displayName[0] === '#'){
+              || i.displayName[0] === '#'){
             groupContacts[groupContacts.length-1].push(i)
           }
         }
