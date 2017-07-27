@@ -9,7 +9,7 @@ ionic2 indexed scroll bar DEMO
 * Run `ionic serve` in a terminal from the project root.
 
 ## App Preview
-<img src="https://github.com/HsuanXyz/hsuan.github.io/blob/master/assets/ionic2-indexed-scroll/indexed-scroll-demo.gif?raw=true" alt="Preview">
+<img src="https://github.com/HsuanXyz/hsuanxyz.github.io/blob/master/assets/ionic2-indexed-scroll/index-scroll.gif?raw=true" alt="Preview">
 
 ## File Structure
 ```
