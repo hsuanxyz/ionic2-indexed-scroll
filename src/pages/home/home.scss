@@ -1,5 +1,7 @@
 page-home {
 
+  ::-webkit-scrollbar{width:0}
+
   $modal-size: 20vw;
   .indexed-menu {
     width: 20px;
@@ -47,6 +49,14 @@ page-home {
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.52);
     box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.16);
+
+    transition: opacity .5s;
+    opacity: 0;
+
+    &.show {
+      opacity: 1
+    }
+
   }
 
 }
