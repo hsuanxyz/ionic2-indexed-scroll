@@ -11,6 +11,8 @@ import {Contacts} from '../../providers/contacts'
 export class HomePage {
 
     index: string = 'A';
+    showModal: boolean = false;
+    timeout: any;
     indexes: Array<string> = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#".split('');
     offsetTops: Array<number> = [];
     contacts: Array<any> = [];
@@ -43,6 +45,7 @@ export class HomePage {
         this.index = this.indexes[index];
         const offsetTop = this.offsetTops[index];
         this.content.scrollTo(0, offsetTop, 300);
+        this.createModal();
     }
 
 
@@ -62,7 +65,15 @@ export class HomePage {
                 return;
             }
         }
+    }
 
+    createModal() {
+        clearTimeout(this.timeout);
+        this.showModal = true;
+        this.timeout = setTimeout(() => {
+            this.showModal = false;
+            this.ref.detectChanges();
+        } , 800)
     }
 
 }
