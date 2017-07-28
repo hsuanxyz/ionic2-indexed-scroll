@@ -73,7 +73,8 @@ export class HomePage {
         this.timeout = setTimeout(() => {
             this.showModal = false;
             this.ref.detectChanges();
-        } , 800)
+        }, 800)
     }
+
 
 }
