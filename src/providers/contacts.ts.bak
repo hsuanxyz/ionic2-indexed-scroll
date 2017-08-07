@@ -13,7 +13,7 @@ import { pinyin } from './transformServe';
  */
 @Injectable()
 export class Contacts {
-    
+    public text: string;
     constructor(public http: Http) {
         console.log('Hello Contacts Provider');
 
