@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
-import {Contact} from "../models/contact.model";
-import {Group} from "../models/group.model";
-
+import { Contact } from "../models/contact.model";
+import { Group } from "../models/group.model";
+import { pinyin } from './transformServe';
 /*
  Generated class for the Contacts provider.
 
@@ -13,9 +13,10 @@ import {Group} from "../models/group.model";
  */
 @Injectable()
 export class Contacts {
-
+    
     constructor(public http: Http) {
         console.log('Hello Contacts Provider');
+
     }
 
     /**
@@ -46,6 +47,7 @@ export class Contacts {
         // Create a parent container
         groupContacts = letterStr.split('')
             .map((str) => {
+
                 return {
                     groupName: str,
                     contacts: []
@@ -56,10 +58,15 @@ export class Contacts {
         groupContacts.forEach((item) => {
 
             for (let i of array) {
-                if (i.displayName[0].toUpperCase() === item.groupName) {
+
+
+                if (pinyin.getCamelChars(i.displayName) === item.groupName||i.displayName[0].toUpperCase() === item.groupName  ) {
+
                     item.contacts.push(i);
                 } else if (letterStr.indexOf(i.displayName[0].toUpperCase()) === -1) {
-                    groupContacts[groupContacts.length - 1].contacts.push(i)
+                    if (letterStr.indexOf(pinyin.getCamelChars(i.displayName)) === -1) {
+                        groupContacts[groupContacts.length - 1].contacts.push(i)
+                    }
                 }
             }
 
