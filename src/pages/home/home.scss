@@ -1,17 +1,17 @@
 page-home {
+  $modal-size: 20vw;
 
   ::-webkit-scrollbar {
     width: 0
   }
 
-  $modal-size: 20vw;
   .indexed-menu {
     width: 20px;
     text-align: center;
     float: right;
-    position: fixed;
+    position: sticky;
     right: 0;
-    top: 60px;
+    top: 10px;
     z-index: 104;
     .indexed-item {
       transition: all .3s ease-out;
@@ -24,9 +24,14 @@ page-home {
     }
   }
 
+  ion-list {
+    position: absolute;
+    width: 100%;
+  }
+
   .content-ios {
     .indexed-menu {
-      top: 50px;
+      top: 20px;
     }
   }
 
