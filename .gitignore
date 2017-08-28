@@ -2,3 +2,5 @@ node_modules/
 www/
 .idea/
 /resources
+/platforms
+/plugins
